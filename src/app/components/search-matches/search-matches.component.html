@@ -1,0 +1,55 @@
+<div class="hero" style="background-image: url('assets/images/bg_2.jpg');">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12 mx-auto text-center">
+          <h1 class="text-danger">Search Matches</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-section">
+    <div class="container">
+      <div class="row w-75 mx-auto">
+        <div class="col-lg-12 ">
+          <form [formGroup]="searchForm">
+            <div class="form-group">
+                <input type="number" class="form-control" formControlName="scoreOne" placeholder="Type Score One Here">
+              </div>
+              <div *ngIf="searchForm.controls['scoreOne'].invalid && (searchForm.controls['scoreOne'].touched || searchForm.controls['scoreOne'].dirty)">
+                <div *ngIf="searchForm.controls['scoreOne'].errors.required">
+                  Score One is required.
+                </div>
+              </div>
+            <div class="form-group">
+                <input type="number" class="form-control" formControlName="scoreTwo" placeholder="Type Score Two Here">
+              </div>
+              <div *ngIf="searchForm.controls['scoreTwo'].invalid && (searchForm.controls['scoreTwo'].touched || searchForm.controls['scoreTwo'].dirty)">
+                <div *ngIf="searchForm.controls['scoreTwo'].errors.required">
+                  Score Two is required.
+                </div>
+              </div>
+            <div class="form-group text-center">
+              <input type="submit"(click)="search()" [disabled]="searchForm.invalid" class="btn btn-primary py-3 px-5" value="Search">
+            </div>
+          </form>  
+        </div>
+      </div>
+
+      <div *ngFor="let match of matches">
+        <app-result [matchInput]="match"></app-result> 
+      </div>
+      <div *ngIf="matches?.length==0">
+       No Matches found.
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+ 
+
+

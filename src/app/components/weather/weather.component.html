@@ -1,0 +1,48 @@
+<div class="hero" style="background-image: url('assets/images/bg_2.jpg');">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12 mx-auto text-center">
+          <h1 class="text-danger">Search Weather</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-section">
+    <div class="container">
+      <div class="row w-75 mx-auto">
+        <div class="col-lg-12 ">
+          <form [formGroup]="weatherSearchForm">
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="city" placeholder="Type the city name">
+              </div>
+              <div *ngIf="weatherSearchForm.controls['city'].invalid && (weatherSearchForm.controls['city'].touched || searchForm.controls['city'].dirty)">
+                <div *ngIf="weatherSearchForm.controls['city'].errors.required">
+                  City is required.
+                </div>
+              </div>
+    
+            <div class="form-group text-center">
+              <input type="submit"(click)="weatherSearch()" [disabled]="weatherSearchForm.invalid" class="btn btn-primary py-3 px-5" value="Search">
+            </div>
+          </form>  
+<div>
+  <div>
+   
+    <div> Temperature: {{foundWeather.result.temp}}</div>
+    <div> Pressure: {{foundWeather.result.pressure}}</div>
+    <div> Humidity: {{foundWeather.result.humidity}}</div>
+  
+    
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ 
+
+
